@@ -1,0 +1,22 @@
+server:
+  port: 8888
+
+spring:
+  datasource:
+#    url: jdbc:mysql://localhost:3306/mybatis_demo?characterEncoding=UTF-8
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: root
+    url: jdbc:h2:mem:testdb;mode=MySQL
+    driver-class-name: org.h2.Driver
+    
+mybatis: 
+  mapper-locations:
+  - classpath:mapper/*.xml # 自己的mapper配置目录
+  - classpath*:com/gitee/sunchenbin/mybatis/actable/mapping/*/*.xml  # actable的官方配置，照抄就ok
+  table:
+    auto: update # create: 会删除原有所有数据在新建; none:不作任何处理; update: 不存在新建，存在更新
+  model:
+    pack: com.example.demo.model # entity目录
+  database:
+    type: mysql
